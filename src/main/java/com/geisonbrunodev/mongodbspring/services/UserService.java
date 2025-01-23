@@ -1,6 +1,7 @@
 package com.geisonbrunodev.mongodbspring.services;
 
 import com.geisonbrunodev.mongodbspring.domain.User;
+import com.geisonbrunodev.mongodbspring.dto.UserDTO;
 import com.geisonbrunodev.mongodbspring.repository.UserRepository;
 import com.geisonbrunodev.mongodbspring.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,4 +25,11 @@ public class UserService {
                 ObjectNotFoundException("Object not found"));
     }
 
+    public User insert(User obj) {
+        return repo.insert(obj);
+    }
+
+    public User fromDTO(UserDTO objDto) {
+        return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
+    }
 }
